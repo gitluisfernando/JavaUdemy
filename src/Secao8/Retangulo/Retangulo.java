@@ -1,12 +1,12 @@
-package Secao8.TrianguloCompleto;
+package Secao8.Retangulo;
 
-public class Triangulo {
+public class Retangulo {
 
     double largura;
     double altura;
 
     public double calcularArea() {
-        double area = largura * altura / 2;
+        double area = largura * altura;
         return area;
     }
 
@@ -15,9 +15,8 @@ public class Triangulo {
         return perimetro;
     }
 
-    public double diagonal() {
-        
+    public double calcularDiagonal() {
+        double diagonal = Math.sqrt(altura * altura + largura * largura);
+        return diagonal;
     }
-
-
 }
