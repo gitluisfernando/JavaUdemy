@@ -25,4 +25,8 @@ public class ContaPoupanca extends ContaBancaria{
         saldoConta = saldoConta * taxaDeJuros;
     }
 
+    @Override
+    public void saqueConta(Double valorSaque) {
+        saldoConta = saldoConta - valorSaque;
+    }
 }

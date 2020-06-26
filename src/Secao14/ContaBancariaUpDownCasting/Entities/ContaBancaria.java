@@ -36,7 +36,8 @@ public class ContaBancaria {
     }
 
     public void saqueConta(Double valorSaque) {
-        saldoConta = saldoConta - valorSaque;
+        double taxaSaque = 5.0;
+        saldoConta = saldoConta - valorSaque - taxaSaque;
     }
 
     public void depositoConta(Double valorDeposito) {
