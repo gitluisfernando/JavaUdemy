@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import Secao15.ReservaQuartoException.Model.Exceptions.DomainException;
+
 public class ReservaQuarto {
 
     private Integer numeroQuarto;
@@ -12,7 +14,10 @@ public class ReservaQuarto {
 
     private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-    public ReservaQuarto(Integer numeroQuarto, Date dataCheckin, Date dataCheckout) {
+    public ReservaQuarto(Integer numeroQuarto, Date dataCheckin, Date dataCheckout) throws DomainException {
+        if (!dataCheckout.after(dataCheckin)) {
+            throw new DomainException("A data de Checkout deve ser superior a de Checkin");
+        }
         this.numeroQuarto = numeroQuarto;
         this.dataCheckin = dataCheckin;
         this.dataCheckout = dataCheckout;
@@ -39,16 +44,15 @@ public class ReservaQuarto {
         return TimeUnit.DAYS.convert(diferenca, TimeUnit.MILLISECONDS); //Transforma o resultado em dias
     }
 
-    public String atualizarDatas(Date dataCheckin, Date dataCheckout) {
+    public void atualizarDatas(Date dataCheckin, Date dataCheckout) throws DomainException {
         Date agora = new Date();
         if (dataCheckin.before(agora) || dataCheckout.before(agora)) {
-            return "Erro na reserva: A data não pode ser inferior a data atual";
+            throw new DomainException("A data não pode ser inferior a data atual");
         } else if (!dataCheckout.after(dataCheckin)) {
-            return "Erro na reserva: A data de Checkout deve ser superior a de Checkin";
+            throw new DomainException("A data de Checkout deve ser superior a de Checkin");
         }
         this.dataCheckin = dataCheckin;
         this.dataCheckout = dataCheckout;
-        return null;
     }
 
     @Override
