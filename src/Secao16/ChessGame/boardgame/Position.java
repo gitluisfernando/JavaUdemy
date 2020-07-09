@@ -1,4 +1,4 @@
-package Secao16.ChessGame.BoardGame;
+package Secao16.ChessGame.boardgame;
 
 public class Position {
 
