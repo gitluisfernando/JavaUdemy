@@ -1,6 +1,8 @@
 package Secao16.ChessGame.chess;
 
 import Secao16.ChessGame.boardgame.Board;
+import Secao16.ChessGame.boardgame.Piece;
+import Secao16.ChessGame.boardgame.Position;
 import Secao16.ChessGame.chess.pieces.King;
 import Secao16.ChessGame.chess.pieces.Rook;
 
@@ -21,6 +23,34 @@ public class ChessMatch {
             }
         }
         return mat;
+    }
+
+    //Takes the piece out of its original position and places it in the destination position
+    public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition) {
+        Position source = sourcePosition.toPosition();
+        Position target = targetPosition.toPosition();
+        validateSourcePosition(source);
+        Piece capturedPiece = makeMoke(source, target);
+        return (ChessPiece)capturedPiece;
+    }
+
+    /*
+    Removes the piece from the source position
+    Removes the possible captured piece from the target position
+    Places the piece from the source position at the target position
+     */
+    private Piece makeMoke(Position source, Position target) {
+        Piece p = board.removePiece(source);
+        Piece capturedPiece = board.removePiece(target);
+        board.placePiece(p, target);
+        return capturedPiece;
+    }
+
+    //Checks if there is a piece in the source position
+    private void validateSourcePosition(Position position) {
+        if (!board.thereIsAPiece(position)) {
+            throw new ChessException("There is no piece on source position");
+        }
     }
 
     //Put the piece in the game
