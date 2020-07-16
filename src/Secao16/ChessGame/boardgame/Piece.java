@@ -1,6 +1,6 @@
 package Secao16.ChessGame.boardgame;
 
-public class Piece {
+public abstract class Piece {
 
     protected Position position;
     private Board board;
@@ -12,6 +12,26 @@ public class Piece {
 
     protected Board getBoard() {
         return board;
+    }
+
+    public abstract boolean[][] possibleMoves();
+
+    public boolean possibleMove(Position position) {
+        return possibleMoves()[position.getRow()][position.getColumn()];
+    }
+
+    //Check if there is at least one possible movement for a piece
+    public boolean isThereAnyPossibleMove() {
+        boolean[][] mat = possibleMoves();
+        //Cycles through the matrix checking for valid movement positions
+        for (int i = 0; i < mat.length; i++) {
+            for (int j = 0; j < mat.length; j++) {
+                if (mat[i][j]) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 }

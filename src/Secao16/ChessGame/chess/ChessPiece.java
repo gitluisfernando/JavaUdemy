@@ -3,7 +3,7 @@ package Secao16.ChessGame.chess;
 import Secao16.ChessGame.boardgame.Board;
 import Secao16.ChessGame.boardgame.Piece;
 
-public class ChessPiece extends Piece {
+public abstract class ChessPiece extends Piece {
 
     private Color color;
 
