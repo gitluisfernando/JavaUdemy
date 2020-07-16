@@ -3,6 +3,7 @@ package Secao16.ChessGame.application;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import Secao16.ChessGame.chess.ChessMatch;
 import Secao16.ChessGame.chess.ChessPiece;
 import Secao16.ChessGame.chess.ChessPosition;
 import Secao16.ChessGame.chess.Color;
@@ -46,6 +47,14 @@ public class UI {
         } catch (RuntimeException e) {
             throw new InputMismatchException("Error reading ChessPosition. Valid values are from a1 to h8");
         }
+    }
+
+    //Print the current game
+    public static void printMatch(ChessMatch chessMatch) {
+        printBoard(chessMatch.getPieces());
+        System.out.println();
+        System.out.println("Turn: " + chessMatch.getTurn());
+        System.out.println("Waiting player: " + chessMatch.getCurrentPlayer());
     }
 
     public static void printBoard(ChessPiece[][] pieces) {
