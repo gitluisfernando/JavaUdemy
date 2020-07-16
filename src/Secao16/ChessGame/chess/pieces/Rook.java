@@ -23,9 +23,10 @@ public class Rook extends ChessPiece {
          * If you meet the requirements (Empty square, Square exists, There is an opposing piece)
          * 1 - Take the position of the Rook and check a row above in the same column and mark it as true
          * 2 - Take the position of the Rook and check the left column on the same line and mark it as true
+         * 3 - Take the position of the Rook and check the right column on the same line and mark it as true
+         * 4 - Take the position of the Rook and check a row below in the same column and mark it as true
          */
         boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
-
         Position p = new Position(0, 0);
 
         //Above
