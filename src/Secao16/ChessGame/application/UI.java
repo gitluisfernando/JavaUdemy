@@ -30,6 +30,12 @@ public class UI {
     public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 
+    //Clears the screen so as not to duplicate the board in the view with each movement made
+    public static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
     //Reads the position and extracts the row and column from the String
     public static ChessPosition readChessPosition(Scanner sc) {
         try {
