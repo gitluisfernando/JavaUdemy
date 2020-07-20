@@ -17,6 +17,11 @@ public abstract class ChessPiece extends Piece {
         return color;
     }
 
+    //Returns a position in the format of the chess game (a1, h8)
+    public ChessPosition getChessPosition() {
+        return ChessPosition.fromPosition(position);
+    }
+
     //Checks if there is an opponent's piece in a given square of the board
     protected boolean isThereOpponentPiece(Position position) {
         ChessPiece p = (ChessPiece) getBoard().piece(position);

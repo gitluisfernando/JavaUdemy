@@ -25,24 +25,25 @@ public class Main {
                 System.out.println();
                 System.out.print("Source: ");
                 ChessPosition source = UI.readChessPosition(sc);
+
                 boolean[][] possibleMoves = chessMatch.possibleMoves(source);
                 UI.clearScreen();
                 UI.printBoard(chessMatch.getPieces(), possibleMoves);
-
                 System.out.println();
                 System.out.print("Target: ");
                 ChessPosition target = UI.readChessPosition(sc);
 
                 ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
 
-                //Whenever you make a move and result in a captured piece, the piece is added to the list
-                if (captured != null) {
+                if (capturedPiece != null) {
                     captured.add(capturedPiece);
                 }
-            } catch (ChessException e) {
+            }
+            catch (ChessException e) {
                 System.out.println(e.getMessage());
                 sc.nextLine();
-            } catch (InputMismatchException e) {
+            }
+            catch (InputMismatchException e) {
                 System.out.println(e.getMessage());
                 sc.nextLine();
             }
