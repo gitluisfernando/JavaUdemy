@@ -18,7 +18,7 @@ public class Main {
         ChessMatch chessMatch = new ChessMatch();
         List<ChessPiece> captured = new ArrayList<>();
 
-        while (true) {
+        while (!chessMatch.getCheckMate()) { //While not in checkmate the game continues to be executed
             try {
                 UI.clearScreen();
                 UI.printMatch(chessMatch, captured);
@@ -38,16 +38,16 @@ public class Main {
                 if (capturedPiece != null) {
                     captured.add(capturedPiece);
                 }
-            }
-            catch (ChessException e) {
+            } catch (ChessException e) {
                 System.out.println(e.getMessage());
                 sc.nextLine();
-            }
-            catch (InputMismatchException e) {
+            } catch (InputMismatchException e) {
                 System.out.println(e.getMessage());
                 sc.nextLine();
             }
         }
+        UI.clearScreen();
+        UI.printMatch(chessMatch, captured);
 
     }
 
