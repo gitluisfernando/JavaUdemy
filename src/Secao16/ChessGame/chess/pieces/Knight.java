@@ -26,7 +26,7 @@ public class Knight extends ChessPiece {
         //Creates a Boolean Matrix the same size as the board
         /*
          * If you meet the requirements (Empty square, Square exists, There is an opposing piece)
-         * Can move to any of the diagonals
+         * Can move in L
          */
         boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
         Position p = new Position(0, 0);
